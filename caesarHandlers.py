@@ -5,12 +5,11 @@ import dataBase as db
 import keyboards as kb
 import figures as fg
 from createBot import bot
-from createBot import Menu, Game, Caesar, horizontalAxis
+from createBot import Game, Caesar, horizontalAxis
 
 async def callback_caesar_game(callback_query: types.CallbackQuery, state: FSMContext):
     await bot.answer_callback_query(callback_query.id)
     await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
-    data = callback_query.data
     figs = 4
     diff = "Цезарь"
     startPos, direction, finalPos = fg.figureSteps(figs, 1)

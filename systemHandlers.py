@@ -8,7 +8,6 @@ from createBot import Menu, Game, Caesar, System
 from createBot import startFirstTime, startNotFirstTime, difficultyText, answerText
 
 # Start
-#@dp.message_handler(commands=['start'], state='*')
 async def command_start(message: types.Message, state: FSMContext):
     if db.isNew(message.from_user.id):
         await bot.send_message(message.from_user.id, "Приветствую, "+ message.from_user.first_name +\
@@ -49,7 +48,6 @@ async def callback_restart(callback_query: types.CallbackQuery, state: FSMContex
         await Menu.mainMenu.set()
 
 #help
-#@dp.message_handler(commands=['help'], state='*')
 async def command_help_difficulty(message: types.Message):
     await bot.send_message(message.from_user.id,
         '-=ПАУЗА=-\n\n' + difficultyText + '\n\n-=ПАУЗА=-', reply_markup=kb.continueKeyboard)
@@ -92,5 +90,3 @@ def registerHandlersSystem(dp : Dispatcher):
     dp.register_message_handler(command_help_difficulty, commands=['help'], state=Game.difficulty)
     dp.register_message_handler(command_help_answer_game, commands=['help'], state=Game.answer)
     dp.register_message_handler(command_help_answer_caesar, commands=['help'], state=Caesar.answer)
-
-    #dp.register_callback_query_handler(process_callback_restart, lambda c: c.data == 'restart', state='*')
