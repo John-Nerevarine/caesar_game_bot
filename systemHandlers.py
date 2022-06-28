@@ -78,6 +78,10 @@ async def callback_backHelp_caesar(callback_query: types.CallbackQuery, state: F
     await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
     await Caesar.answer.set()
 
+async def command_common_help(message: types.Message):
+    await bot.send_message(message.from_user.id, 
+        'При обнаружении проблем с ботом, пишите @John_Nerevarine')
+
 def registerHandlersSystem(dp : Dispatcher):
     dp.register_message_handler(command_start, commands=['start'], state='*')
     dp.register_callback_query_handler(callback_records_back, lambda c: c.data == 'back', state=Menu.records)
@@ -90,3 +94,4 @@ def registerHandlersSystem(dp : Dispatcher):
     dp.register_message_handler(command_help_difficulty, commands=['help'], state=Game.difficulty)
     dp.register_message_handler(command_help_answer_game, commands=['help'], state=Game.answer)
     dp.register_message_handler(command_help_answer_caesar, commands=['help'], state=Caesar.answer)
+    dp.register_message_handler(command_common_help, commands=['help'], state='*')
