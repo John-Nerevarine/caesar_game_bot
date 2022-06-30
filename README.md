@@ -120,6 +120,7 @@
 |command_help_answer_caesar(message: types.Message)|Функция вызова подсказки о формате ответа по команде **/help** при выборе ответа на сложности **Цезарь**. Вызывается из состояния **Caesar.answer**, задаёт состояние **System.helpAnswerCaesar**.|
 |callback_backHelp_game(callback_query: types.CallbackQuery, state: FSMContext)|Возврат к выбору ответа из подсказки по кнопке **Продолжить**. Вызывается из состояния **System.helpAnswerGame**, задаёт состояние **Game.answer**.|
 |callback_backHelp_caesar(callback_query: types.CallbackQuery, state: FSMContext)|Возврат к выбору ответа из подсказки по кнопке **Продолжить** на сложности **Цезарь**. Вызывается из состояния **System.helpAnswerCaesar**, задаёт состояние **Caesar.answer**.|
+|command_common_help(message: types.Message)|Вывод общей подсказки по команде **/help**. Вызывается из любого состояния, если для него не задана специальная подсказка. Состояние не изменяет.|
 |registerHandlersSystem(dp : Dispatcher)|Регистрация обработчиков. Вызывается из модуля **bot.py**.|
 
 
